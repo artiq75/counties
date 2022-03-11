@@ -1,26 +1,53 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { CountryItem } from '../components/CountryItem'
 import { getCountries } from '../countriesApi'
 
+function setRegionStorage(region) {
+  window.localStorage.setItem('region', region ?? '')
+  return region
+}
+
 export function Countries() {
   const [countries, setCountries] = useState([])
   const [search, setSearch] = useState('')
+  const [region, setRegion] = useState(
+    window.localStorage.getItem('region') ?? ''
+  )
+
+  const regions = useRef([
+    { value: 'africa', label: 'Africa' },
+    { value: 'americas', label: 'Americas' },
+    { value: 'asia', label: 'Asia' },
+    { value: 'europe', label: 'Europe' },
+    { value: 'oceania', label: 'Oceania' },
+  ])
 
   useEffect(() => {
-    let timeoutId = null
-    if (!search) {
+    if (!search && !region) {
       getCountries().then(setCountries)
-    } else {
+    }
+
+    let timeoutId = null
+    if (search) {
       timeoutId = setTimeout(() => {
         getCountries(`name/${search}`).then(setCountries)
       }, 300)
     }
+
+    if (region) {
+      getCountries(`region/${region}`).then(setCountries)
+    }
+
     return () => clearTimeout(timeoutId)
-  }, [search])
+  }, [search, region])
 
   const handleSearch = function (e) {
     setSearch(e.target.value)
+  }
+
+  const handleSelect = function (e) {
+    setRegion(setRegionStorage(e.target.value))
   }
 
   return (
@@ -31,6 +58,14 @@ export function Countries() {
         onChange={handleSearch}
         placeholder="Search for a country..."
       />
+      <select value={region} onChange={handleSelect}>
+        <option value="">Filter by region</option>
+        {regions.current.map((continent) => (
+          <option key={continent.value} value={continent.value}>
+            {continent.label}
+          </option>
+        ))}
+      </select>
       {countries.map((country) => (
         <Link to={`/${country.alpha3Code}`} key={country.alpha3Code}>
           <CountryItem country={country} />
