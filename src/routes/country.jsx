@@ -23,7 +23,7 @@ export function Country() {
   return (
     <div className="country">
       <button onClick={() => navigate(-1)}>Back</button>
-      <img src={country.flags?.svg} alt={`Drapeau du ${country.name}`} />
+      <img src={country.flags?.svg} alt={`Flag of ${country.name}`} />
 
       <h1>{country.name}</h1>
 

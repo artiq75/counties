@@ -5,7 +5,7 @@ export function CountryItem({ country }) {
     <article key={country.name}>
       <img
         src={country.flags.svg}
-        alt={`Drapeau du ${country.name}`}
+        alt={`Flag of ${country.name}`}
       />
       <h2>{country.name}</h2>
       <ul>
