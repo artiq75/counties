@@ -5,9 +5,9 @@ export function CountryItem({ country }) {
     <article key={country.name}>
       <img
         src={country.flags.svg}
-        alt={`Drapeau du ${country.name.official}`}
+        alt={`Drapeau du ${country.name}`}
       />
-      <h2>{country.name.official}</h2>
+      <h2>{country.name}</h2>
       <ul>
         <li>Population: {numberFormat(country.population)}</li>
         <li>Region: {country.region}</li>
