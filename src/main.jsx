@@ -2,8 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { App } from './App'
+import { ThemeMode } from './elements/ThemeMode'
 import { Countries } from './routes/countries'
 import { Country } from './routes/country'
+
+customElements.define('theme-mode', ThemeMode)
 
 ReactDOM.render(
   <React.StrictMode>
