@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getCountries } from '../countriesApi'
+import { numberFormat } from '../utils'
 
 export function Country() {
   const [country, setCountry] = useState({})
@@ -32,7 +33,7 @@ export function Country() {
           <span>Native Name:</span> {country.nativeName}
         </li>
         <li>
-          <span>Population:</span> {country.population}
+          <span>Population:</span> {numberFormat(country.population)}
         </li>
         <li>
           <span>Region:</span> {country.region}
