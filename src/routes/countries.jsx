@@ -66,11 +66,15 @@ export function Countries() {
           </option>
         ))}
       </select>
-      {countries.map((country) => (
-        <Link to={`/${country.alpha3Code}`} key={country.alpha3Code}>
-          <CountryItem country={country} />
-        </Link>
-      ))}
+      <ul className="country-items">
+        {countries.map((country) => (
+          <li key={country.alpha3Code}>
+            <Link to={`/${country.alpha3Code}`}>
+              <CountryItem country={country} />
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
