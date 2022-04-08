@@ -52,20 +52,28 @@ export function Countries() {
 
   return (
     <div className="countries">
-      <input
-        type="text"
-        value={search}
-        onChange={handleSearch}
-        placeholder="Search for a country..."
-      />
-      <select value={region} onChange={handleSelect}>
-        <option value="">Filter by region</option>
-        {regions.current.map((continent) => (
-          <option key={continent.value} value={continent.value}>
-            {continent.label}
-          </option>
-        ))}
-      </select>
+      <div className="countries__filters">
+        <div className="search">
+          <span className="search__icon">
+            <ion-icon name="search"></ion-icon>
+          </span>
+          <input
+            type="text"
+            id="search"
+            value={search}
+            onChange={handleSearch}
+            placeholder="Search for a country..."
+          />
+        </div>
+        <select value={region} onChange={handleSelect}>
+          <option value="">Filter by region</option>
+          {regions.current.map((continent) => (
+            <option key={continent.value} value={continent.value}>
+              {continent.label}
+            </option>
+          ))}
+        </select>
+      </div>
       <ul className="country-items">
         {countries.map((country) => (
           <li key={country.alpha3Code}>

@@ -1,6 +1,6 @@
 :root {
   --shadow: 0 4px 6px -1px rgb(0 0 0/0.1), 0 2px 4px -2px rgb(0 0 0/0.1);
-  --radius: 5px;
+  --radius: .25rem;
 }
 
 *,
@@ -48,6 +48,19 @@ li {
   list-style-type: none;
 }
 
+input[type='text'] {
+  display: block;
+  width: 100%;
+  border: 1px solid transparent;
+  padding: .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  appearance: none;
+  background: var(--white);
+  color: inherit;
+}
+
 img {
   display: inline-block;
   width: 100%;
@@ -56,6 +69,40 @@ img {
 .countries {
   padding: 0 1em;
   font-size: 14px;
+}
+
+.countries__filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.search {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.search input {
+  flex-grow: 1;
+}
+
+.search__icon {
+  padding: .75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+}
+
+.search__icon ion-icon {
+  font-size: 1rem;
+  color: var(--dark-gray);
 }
 
 .country-items {
@@ -88,8 +135,8 @@ img {
   margin-bottom: 15px;
 }
 
-.country-item__details ul>*:not(:last-child) {
-  margin-bottom: .25em;
+.country-item__details ul > *:not(:last-child) {
+  margin-bottom: 0.25em;
 }
 
 @media only screen and (min-width: 750px) {
