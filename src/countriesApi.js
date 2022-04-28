@@ -1,5 +1,3 @@
-class BadNetworkResponseError extends Error {}
-
 const http = async function (url, param = {}) {
   const response = await fetch(url, param)
   if (response.ok) {

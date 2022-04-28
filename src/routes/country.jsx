@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getCountries } from '../countriesApi'
-import { numberFormat } from '../utils'
+import { getCountries, numberFormat } from '../utils'
 
 export function Country() {
   const [country, setCountry] = useState({})

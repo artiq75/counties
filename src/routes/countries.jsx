@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { CountryItem } from '../components/CountryItem'
-import { getCountries } from '../countriesApi'
+import { getCountries } from '../utils'
 
 function setRegionStorage(region) {
   window.localStorage.setItem('region', region ?? '')

@@ -114,6 +114,7 @@ img {
 .country-item {
   max-width: 300px;
   min-width: 250px;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   box-shadow: var(--shadow);
