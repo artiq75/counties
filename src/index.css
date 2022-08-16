@@ -1,6 +1,6 @@
 :root {
   --shadow: 0 4px 6px -1px rgb(0 0 0/0.1), 0 2px 4px -2px rgb(0 0 0/0.1);
-  --radius: .25rem;
+  --radius: 5px;
 }
 
 *,
@@ -15,24 +15,22 @@ html,
 body {
   height: 100%;
   width: 100%;
-
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   font-weight: 600;
-
   background-color: var(--very-light-gray);
   color: var(--very-dark-blue);
 }
 
-body[class='light'] {
+body.light {
   --very-dark-blue: hsl(200, 15%, 8%);
   --very-light-gray: hsl(0, 0%, 98%);
   --dark-gray: hsl(0, 0%, 52%);
   --white: hsl(0, 0%, 100%);
 }
 
-body[class='dark'] {
+body.dark {
   --very-dark-blue: hsl(0, 0%, 100%);
   --very-light-gray: hsl(207, 26%, 17%);
   --dark-gray: hsl(0, 0%, 52%);
@@ -51,12 +49,9 @@ li {
 input[type='text'] {
   display: block;
   width: 100%;
-  border: 1px solid transparent;
-  padding: .75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  appearance: none;
+  padding: 1rem;
+  border: 1px solid var(--white);
+  font-size: 1em;
   background: var(--white);
   color: inherit;
 }
@@ -93,7 +88,7 @@ img {
 }
 
 .search__icon {
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,4 +152,49 @@ img {
   .country-items {
     grid-template-columns: repeat(4, max-content);
   }
+}
+
+.select {
+  position: relative;
+  min-width: 200px;
+  padding: 1em;
+  border: 1px solid var(--white);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.select.expand {
+  overflow: visible;
+}
+
+.select::after {
+  content: '‹';
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  right: .75rem;
+  transform: translate3d(-50%, -50%, 0) rotate(90deg);
+}
+
+.select.expand::after {
+  transform: translate3d(-50%, -50%, 0) rotate(-90deg);
+}
+
+.select__options {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  right: 0;
+  padding: inherit;
+  border-radius: inherit;
+  background-color: inherit;
+  box-shadow: var(--shadow);
+}
+
+.select__options > *:not(:last-child) {
+  margin-bottom: 5px;
 }

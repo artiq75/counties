@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { CountryItem } from '../components/CountryItem'
+import { Option, Select } from '../components/Select'
 import { getCountries } from '../utils'
 
 function setRegionStorage(region) {
@@ -46,8 +47,8 @@ export function Countries() {
     setSearch(e.target.value)
   }
 
-  const handleSelect = function (e) {
-    setRegion(setRegionStorage(e.target.value))
+  const handleSelect = function (value) {
+    setRegion(setRegionStorage(value))
   }
 
   return (
@@ -65,14 +66,14 @@ export function Countries() {
             placeholder="Search for a country..."
           />
         </div>
-        <select value={region} onChange={handleSelect}>
-          <option value="">Filter by region</option>
-          {regions.current.map((continent) => (
-            <option key={continent.value} value={continent.value}>
-              {continent.label}
-            </option>
+        <Select value={region} onChange={handleSelect}>
+          <Option value="">Filter by region</Option>
+          {regions.current.map((region) => (
+            <Option key={region.value} value={region.value}>
+              {region.label}
+            </Option>
           ))}
-        </select>
+        </Select>
       </div>
       <ul className="country-items">
         {countries.map((country) => (
