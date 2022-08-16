@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { CountryItem } from '../components/CountryItem'
+import { Input } from '../components/Input'
 import { Option, Select } from '../components/Select'
 import { getCountries } from '../utils'
 
@@ -43,8 +44,8 @@ export function Countries() {
     return () => clearTimeout(timeoutId)
   }, [search, region])
 
-  const handleSearch = function (e) {
-    setSearch(e.target.value)
+  const handleSearch = function (value) {
+    setSearch(value)
   }
 
   const handleSelect = function (value) {
@@ -54,18 +55,7 @@ export function Countries() {
   return (
     <div className="countries">
       <div className="countries__filters">
-        <div className="search">
-          <span className="search__icon">
-            <ion-icon name="search"></ion-icon>
-          </span>
-          <input
-            type="text"
-            id="search"
-            value={search}
-            onChange={handleSearch}
-            placeholder="Search for a country..."
-          />
-        </div>
+        <Input value={search} onChange={handleSearch} />
         <Select value={region} onChange={handleSelect}>
           <Option value="">Filter by region</Option>
           {regions.current.map((region) => (
