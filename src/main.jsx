@@ -5,6 +5,7 @@ import { App } from './App'
 import { ThemeMode } from './elements/ThemeMode'
 import { Countries } from './routes/countries'
 import { Country } from './routes/country'
+import './index.css'
 
 customElements.define('theme-mode', ThemeMode)
 
