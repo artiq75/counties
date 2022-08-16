@@ -1,6 +1,6 @@
 :root {
   --shadow: 0 4px 6px -1px rgb(0 0 0/0.1), 0 2px 4px -2px rgb(0 0 0/0.1);
-  --radius: 5px;
+  --radius: 3px;
 }
 
 *,
@@ -61,8 +61,73 @@ img {
   width: 100%;
 }
 
+button {
+  padding: 0.5em 1.25rem;
+  border: 1px solid var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: inherit;
+  background: var(--white);
+  cursor: pointer;
+}
+
+theme-mode {
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 1em;
+  box-shadow: var(--shadow);
+  background: var(--white);
+}
+
+.navbar,
+main,
+.countries__filters {
+  margin-bottom: 3em;
+}
+
+@media only screen and (max-width: 800px) {
+  .navbar {
+    margin-bottom: 2em;
+  }
+
+  .navbar h1 {
+    font-size: 1em;
+  }
+  .navbar theme-mode {
+    font-size: 0.75em;
+  }
+
+  .countries__filters {
+    gap: 2em;
+    margin-bottom: 2em;
+  }
+
+  .country__title {
+    font-size: 1.25em;
+  }
+
+  .country__details {
+    font-size: 0.85em;
+  }
+}
+
+main {
+  padding: 1em;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .countries {
-  padding: 0 1em;
   font-size: 14px;
 }
 
@@ -154,6 +219,43 @@ img {
   }
 }
 
+@media only screen and (min-width: 800px) {
+  .country {
+    display: flex;
+    align-items: center;
+    gap: 120px;
+  }
+}
+
+.country__btn,
+.country__img,
+.country__details {
+  margin-bottom: 3em;
+}
+
+.country__img {
+  height: auto;
+  max-width: 500px;
+}
+
+.country__title {
+  margin-bottom: 0.75em;
+}
+
+.country__details > *:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.country__borders-title {
+  margin-bottom: 1em;
+}
+
+.country__borders-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
 .select {
   position: relative;
   min-width: 200px;
@@ -176,7 +278,7 @@ img {
   font-size: 20px;
   position: absolute;
   top: 50%;
-  right: .75rem;
+  right: 0.75rem;
   transform: translate3d(-50%, -50%, 0) rotate(90deg);
 }
 

@@ -22,58 +22,70 @@ export function Country() {
 
   return (
     <div className="country">
-      <button onClick={() => navigate(-1)}>Back</button>
-      <img src={country.flags?.svg} alt={`Flag of ${country.name}`} />
+      <div>
+        <button className="country__btn" onClick={() => navigate(-1)}>
+          <span>&#8592;</span>
+          back
+        </button>
+        <img
+          className="country__img"
+          src={country.flags?.svg}
+          alt={`Flag of ${country.name}`}
+        />
+      </div>
 
-      <h1>{country.name}</h1>
-
-      <ul>
-        <li>
-          <span>Native Name:</span> {country.nativeName}
-        </li>
-        <li>
-          <span>Population:</span> {numberFormat(country.population)}
-        </li>
-        <li>
-          <span>Region:</span> {country.region}
-        </li>
-        <li>
-          <span>Sub Region:</span> {country.subregion}
-        </li>
-        <li>
-          <span>Capital:</span> {country.capital}
-        </li>
-        <li>
-          <span>Top Level Domain:</span> {country.topLevelDomain?.join(', ')}
-        </li>
-        <li>
-          <span>Currencies:</span>{' '}
-          {country.currencies?.map((c) => c.name).join(', ')}
-        </li>
-        <li>
-          <span>Languages:</span>{' '}
-          {country.languages?.map((l) => l.name).join(', ')}
-        </li>
-      </ul>
-
-      {borderCountries.length > 0 && (
-        <ul>
+      <div>
+        <h1 className="country__title">{country.name}</h1>
+        <ul className="country__details">
           <li>
-            <strong>Border countries:</strong>
+            <span>Native Name:</span> {country.nativeName}
           </li>
-          {borderCountries.map((borderCountry) => (
-            <li key={borderCountry.name}>
-              <button
-                onClick={() =>
-                  window.location.assign(`/${borderCountry.alpha3Code}`)
-                }
-              >
-                {borderCountry.name}
-              </button>
-            </li>
-          ))}
+          <li>
+            <span>Population:</span> {numberFormat(country.population)}
+          </li>
+          <li>
+            <span>Region:</span> {country.region}
+          </li>
+          <li>
+            <span>Sub Region:</span> {country.subregion}
+          </li>
+          <li>
+            <span>Capital:</span> {country.capital}
+          </li>
+          <li>
+            <span>Top Level Domain:</span> {country.topLevelDomain?.join(', ')}
+          </li>
+          <li>
+            <span>Currencies:</span>{' '}
+            {country.currencies?.map((c) => c.name).join(', ')}
+          </li>
+          <li>
+            <span>Languages:</span>{' '}
+            {country.languages?.map((l) => l.name).join(', ')}
+          </li>
         </ul>
-      )}
+
+        {borderCountries.length > 0 && (
+          <>
+            <li className="country__borders-title">
+              <strong>Border countries:</strong>
+            </li>
+            <ul className="country__borders-items">
+              {borderCountries.map((borderCountry) => (
+                <li key={borderCountry.name}>
+                  <button
+                    onClick={() =>
+                      window.location.assign(`/${borderCountry.alpha3Code}`)
+                    }
+                  >
+                    {borderCountry.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </div>
   )
 }
